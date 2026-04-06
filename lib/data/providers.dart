@@ -52,13 +52,13 @@ class PlayerNotifier extends StateNotifier<PlayerState> {
   }
 
   void next() {
-    final tracks = MockData.tracks;
+    const tracks = MockData.tracks;
     final nextIndex = (state.currentIndex + 1) % tracks.length;
     playTrack(tracks[nextIndex], nextIndex);
   }
 
   void previous() {
-    final tracks = MockData.tracks;
+    const tracks = MockData.tracks;
     final prevIndex = (state.currentIndex - 1 + tracks.length) % tracks.length;
     playTrack(tracks[prevIndex], prevIndex);
   }
@@ -111,7 +111,8 @@ class SearchNotifier extends StateNotifier<SearchState> {
       ...MockData.animeList.where((a) => a.title.toLowerCase().contains(q)),
       ...MockData.mangaList.where((m) => m.title.toLowerCase().contains(q)),
       ...MockData.tracks.where((t) =>
-          t.title.toLowerCase().contains(q) || t.artist.toLowerCase().contains(q)),
+          t.title.toLowerCase().contains(q) ||
+          t.artist.toLowerCase().contains(q)),
     ];
     state = state.copyWith(query: query, results: results);
   }

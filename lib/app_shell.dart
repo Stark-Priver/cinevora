@@ -9,6 +9,7 @@ import 'features/browse/browse_screen.dart';
 import 'features/manga/manga_screen.dart';
 import 'features/music/music_screen.dart';
 import 'widgets/mini_player.dart';
+import 'widgets/liquid_glass_nav.dart';
 
 class AppShell extends ConsumerWidget {
   const AppShell({super.key});
@@ -37,59 +38,36 @@ class AppShell extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (hasPlayer) const MiniPlayer(),
-          Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(color: AppColors.divider, width: 0.5),
+          LiquidGlassNav(
+            currentIndex: currentTab,
+            onTap: (i) => ref.read(currentTabProvider.notifier).state = i,
+            items: [
+              NavItem(
+                icon: Icons.home_outlined,
+                activeIcon: Icons.home,
+                label: 'Home',
               ),
-            ),
-            child: BottomNavigationBar(
-              currentIndex: currentTab,
-              onTap: (i) =>
-                  ref.read(currentTabProvider.notifier).state = i,
-              backgroundColor: AppColors.surface,
-              selectedItemColor: AppColors.primary,
-              unselectedItemColor: AppColors.textSecondary,
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              type: BottomNavigationBarType.fixed,
-              elevation: 0,
-              selectedLabelStyle: const TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
+              NavItem(
+                icon: Icons.search_outlined,
+                activeIcon: Icons.search,
+                label: 'Search',
               ),
-              unselectedLabelStyle: const TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w400,
+              NavItem(
+                icon: Icons.grid_view_outlined,
+                activeIcon: Icons.grid_view,
+                label: 'Browse',
               ),
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined, size: 22),
-                  activeIcon: Icon(Icons.home, size: 22),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.search_outlined, size: 22),
-                  activeIcon: Icon(Icons.search, size: 22),
-                  label: 'Search',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.grid_view_outlined, size: 22),
-                  activeIcon: Icon(Icons.grid_view, size: 22),
-                  label: 'Browse',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book_outlined, size: 22),
-                  activeIcon: Icon(Icons.menu_book, size: 22),
-                  label: 'Manga',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.music_note_outlined, size: 22),
-                  activeIcon: Icon(Icons.music_note, size: 22),
-                  label: 'Music',
-                ),
-              ],
-            ),
+              NavItem(
+                icon: Icons.menu_book_outlined,
+                activeIcon: Icons.menu_book,
+                label: 'Manga',
+              ),
+              NavItem(
+                icon: Icons.music_note_outlined,
+                activeIcon: Icons.music_note,
+                label: 'Music',
+              ),
+            ],
           ),
         ],
       ),

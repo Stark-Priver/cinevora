@@ -111,7 +111,7 @@ class _Controls extends StatelessWidget {
 
   String _formatTime(double progress) {
     // Mock: 2h18m total
-    final totalSeconds = 8280;
+    const totalSeconds = 8280;
     final current = (progress * totalSeconds).toInt();
     final m = current ~/ 60;
     final s = current % 60;
@@ -229,10 +229,10 @@ class _Controls extends StatelessWidget {
                     constraints: const BoxConstraints(),
                   ),
                   const SizedBox(width: 16),
-                  Text(
+                  const Text(
                     '2:18:00',
-                    style: const TextStyle(
-                        color: AppColors.textSecondary, fontSize: 12),
+                    style:
+                        TextStyle(color: AppColors.textSecondary, fontSize: 12),
                   ),
                 ],
               ),
