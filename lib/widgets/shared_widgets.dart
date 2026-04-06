@@ -236,8 +236,7 @@ class _ContinueWatchingCardState extends State<ContinueWatchingCard>
     super.initState();
     _ctrl = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 180));
-    _scale =
-        Tween<double>(begin: 1.0, end: 1.03).animate(_ctrl);
+    _scale = Tween<double>(begin: 1.0, end: 1.03).animate(_ctrl);
   }
 
   @override
@@ -361,8 +360,7 @@ class ChipFilter extends StatelessWidget {
                 color: isSelected ? AppColors.primary : AppColors.surface,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color:
-                      isSelected ? AppColors.primary : AppColors.divider,
+                  color: isSelected ? AppColors.primary : AppColors.divider,
                 ),
               ),
               child: Text(
@@ -420,7 +418,8 @@ class CinevoraSearchBar extends StatelessWidget {
               .textTheme
               .bodyMedium
               ?.copyWith(color: AppColors.textSecondary),
-          prefixIcon: const Icon(Icons.search, color: AppColors.textSecondary, size: 20),
+          prefixIcon: const Icon(Icons.search,
+              color: AppColors.textSecondary, size: 20),
           border: InputBorder.none,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -443,7 +442,7 @@ class RatingBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: AppColors.background.withOpacity(0.8),
+        color: AppColors.background.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(6),
       ),
       child: Row(

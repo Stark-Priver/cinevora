@@ -103,9 +103,8 @@ class FullPlayerScreen extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(track.title,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis),
                             const SizedBox(height: 4),
@@ -131,12 +130,13 @@ class FullPlayerScreen extends ConsumerWidget {
                           trackHeight: 2,
                           thumbShape: const RoundSliderThumbShape(
                               enabledThumbRadius: 6),
-                          overlayShape: const RoundSliderOverlayShape(
-                              overlayRadius: 14),
+                          overlayShape:
+                              const RoundSliderOverlayShape(overlayRadius: 14),
                           activeTrackColor: AppColors.primary,
                           inactiveTrackColor: AppColors.divider,
                           thumbColor: AppColors.textPrimary,
-                          overlayColor: AppColors.primary.withOpacity(0.2),
+                          overlayColor:
+                              AppColors.primary.withValues(alpha: 0.2),
                         ),
                         child: Slider(
                           value: player.progress,
@@ -150,9 +150,9 @@ class FullPlayerScreen extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              _formatTime((player.progress *
-                                      track.durationSeconds)
-                                  .toInt()),
+                              _formatTime(
+                                  (player.progress * track.durationSeconds)
+                                      .toInt()),
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                             Text(track.duration,
@@ -251,8 +251,7 @@ class FullPlayerScreen extends ConsumerWidget {
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text('Queue',
-                style: Theme.of(context).textTheme.titleLarge),
+            child: Text('Queue', style: Theme.of(context).textTheme.titleLarge),
           ),
           const SizedBox(height: 12),
           Expanded(
@@ -276,9 +275,8 @@ class FullPlayerScreen extends ConsumerWidget {
                         color: isActive
                             ? AppColors.primary
                             : AppColors.textPrimary,
-                        fontWeight: isActive
-                            ? FontWeight.w600
-                            : FontWeight.w400,
+                        fontWeight:
+                            isActive ? FontWeight.w600 : FontWeight.w400,
                         fontSize: 14,
                       )),
                   subtitle: Text(t.artist,

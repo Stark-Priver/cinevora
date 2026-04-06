@@ -165,7 +165,7 @@ class _Controls extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withValues(alpha: 0.5),
               shape: BoxShape.circle,
               border: Border.all(color: Colors.white30),
             ),
@@ -196,7 +196,7 @@ class _Controls extends StatelessWidget {
                   activeTrackColor: AppColors.primary,
                   inactiveTrackColor: const Color(0x40FFFFFF),
                   thumbColor: Colors.white,
-                  overlayColor: AppColors.primary.withOpacity(0.2),
+                  overlayColor: AppColors.primary.withValues(alpha: 0.2),
                 ),
                 child: Slider(
                   value: progress,

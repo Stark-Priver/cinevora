@@ -45,8 +45,7 @@ class AnimeDetailScreen extends StatelessWidget {
                   CachedNetworkImage(
                     imageUrl: anime.backdropUrl,
                     fit: BoxFit.cover,
-                    placeholder: (_, __) =>
-                        Container(color: AppColors.surface),
+                    placeholder: (_, __) => Container(color: AppColors.surface),
                   ),
                   Container(color: const Color(0x55000000)),
                   Positioned(
@@ -60,7 +59,6 @@ class AnimeDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-
           SliverPadding(
             padding: const EdgeInsets.all(16),
             sliver: SliverList(
@@ -80,12 +78,12 @@ class AnimeDetailScreen extends StatelessWidget {
                           horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
                         color: anime.status == 'Ongoing'
-                            ? AppColors.primary.withOpacity(0.15)
+                            ? AppColors.primary.withValues(alpha: 0.15)
                             : AppColors.surface,
                         borderRadius: BorderRadius.circular(6),
                         border: Border.all(
                             color: anime.status == 'Ongoing'
-                                ? AppColors.primary.withOpacity(0.4)
+                                ? AppColors.primary.withValues(alpha: 0.4)
                                 : AppColors.divider),
                       ),
                       child: Text(
@@ -105,9 +103,8 @@ class AnimeDetailScreen extends StatelessWidget {
                 Wrap(
                   spacing: 8,
                   runSpacing: 6,
-                  children: anime.genres
-                      .map((g) => GenreTag(label: g))
-                      .toList(),
+                  children:
+                      anime.genres.map((g) => GenreTag(label: g)).toList(),
                 ),
                 const SizedBox(height: 16),
                 Text(anime.description,
@@ -170,7 +167,7 @@ class _MockEpisode {
 class _EpisodeRow extends StatelessWidget {
   final _MockEpisode episode;
 
-  const _EpisodeRow({super.key, required this.episode});
+  const _EpisodeRow({required this.episode});
 
   @override
   Widget build(BuildContext context) {

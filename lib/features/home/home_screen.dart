@@ -10,7 +10,6 @@ import '../player/video_player_screen.dart';
 import '../media/movie_detail_screen.dart';
 import '../media/anime_detail_screen.dart';
 
-
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -96,8 +95,7 @@ class HomeScreen extends ConsumerWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) =>
-                                      MovieDetailScreen(movie: m)),
+                                  builder: (_) => MovieDetailScreen(movie: m)),
                             );
                           },
                         ))
@@ -120,8 +118,7 @@ class HomeScreen extends ConsumerWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) =>
-                                      AnimeDetailScreen(anime: a)),
+                                  builder: (_) => AnimeDetailScreen(anime: a)),
                             );
                           },
                         ))
@@ -147,9 +144,7 @@ class HomeScreen extends ConsumerWidget {
                           aspectRatio: 1,
                           onTap: () {
                             final idx = tracks.indexOf(t);
-                            ref
-                                .read(playerProvider.notifier)
-                                .playTrack(t, idx);
+                            ref.read(playerProvider.notifier).playTrack(t, idx);
                           },
                         ))
                     .toList(),
@@ -192,7 +187,7 @@ class _FeaturedBanner extends StatelessWidget {
           MaterialPageRoute(builder: (_) => const VideoPlayerScreen()),
         );
       },
-      child: Container(
+      child: SizedBox(
         height: 420,
         child: Stack(
           fit: StackFit.expand,
@@ -290,8 +285,7 @@ class _WatchButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 0,
-        textStyle:
-            const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+        textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
       ),
     );
   }
@@ -309,8 +303,7 @@ class _AddButton extends StatelessWidget {
         side: const BorderSide(color: AppColors.divider),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        textStyle:
-            const TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+        textStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
       ),
     );
   }
@@ -385,11 +378,10 @@ class _YouTubeSection extends StatelessWidget {
                     const SizedBox(height: 6),
                     Text(
                       v.title,
-                      style:
-                          Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: AppColors.textPrimary,
-                                fontWeight: FontWeight.w500,
-                              ),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: AppColors.textPrimary,
+                            fontWeight: FontWeight.w500,
+                          ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

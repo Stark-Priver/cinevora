@@ -9,7 +9,8 @@ class BrowseScreen extends StatelessWidget {
     _Category('Movies', Icons.movie_outlined, 'Thousands of titles'),
     _Category('Anime', Icons.animation_outlined, 'Japanese animation'),
     _Category('Manga', Icons.menu_book_outlined, 'Read digital manga'),
-    _Category('Animation', Icons.theaters_outlined, 'Western & world animation'),
+    _Category(
+        'Animation', Icons.theaters_outlined, 'Western & world animation'),
     _Category('Trending', Icons.whatshot_outlined, 'What\'s popular now'),
     _Category('New Releases', Icons.fiber_new_outlined, 'Recently added'),
     _Category('Music', Icons.music_note_outlined, 'Tracks & albums'),
@@ -36,8 +37,7 @@ class BrowseScreen extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
@@ -66,7 +66,7 @@ class _Category {
 class _CategoryCard extends StatefulWidget {
   final _Category category;
 
-  const _CategoryCard({super.key, required this.category});
+  const _CategoryCard({required this.category});
 
   @override
   State<_CategoryCard> createState() => _CategoryCardState();
@@ -112,15 +112,13 @@ class _CategoryCardState extends State<_CategoryCard>
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(widget.category.icon,
-                  color: AppColors.primary, size: 28),
+              Icon(widget.category.icon, color: AppColors.primary, size: 28),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.category.name,
-                    style:
-                        Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 2),
                   Text(

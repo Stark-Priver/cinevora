@@ -28,20 +28,31 @@ class AppTheme {
       ),
       textTheme: GoogleFonts.dmSansTextTheme(
         const TextTheme(
-          displayLarge: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w700),
-          displayMedium: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w700),
-          headlineLarge: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w700),
-          headlineMedium: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
-          headlineSmall: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
-          titleLarge: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
-          titleMedium: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w500),
-          titleSmall: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.w500),
+          displayLarge: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w700),
+          displayMedium: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w700),
+          headlineLarge: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w700),
+          headlineMedium: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+          headlineSmall: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+          titleLarge: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+          titleMedium: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w500),
+          titleSmall: TextStyle(
+              color: AppColors.textSecondary, fontWeight: FontWeight.w500),
           bodyLarge: TextStyle(color: AppColors.textPrimary),
           bodyMedium: TextStyle(color: AppColors.textSecondary),
-          bodySmall: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.w300),
-          labelLarge: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+          bodySmall: TextStyle(
+              color: AppColors.textSecondary, fontWeight: FontWeight.w300),
+          labelLarge: TextStyle(
+              color: AppColors.textPrimary, fontWeight: FontWeight.w600),
           labelMedium: TextStyle(color: AppColors.textSecondary),
-          labelSmall: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.w300),
+          labelSmall: TextStyle(
+              color: AppColors.textSecondary, fontWeight: FontWeight.w300),
         ),
       ),
       dividerColor: AppColors.divider,
@@ -67,7 +78,8 @@ class AppTheme {
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.surface,
         selectedColor: AppColors.primary,
-        labelStyle: GoogleFonts.dmSans(color: AppColors.textSecondary, fontSize: 12),
+        labelStyle:
+            GoogleFonts.dmSans(color: AppColors.textSecondary, fontSize: 12),
         side: const BorderSide(color: AppColors.divider),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
