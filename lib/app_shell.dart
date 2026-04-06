@@ -34,42 +34,49 @@ class AppShell extends ConsumerWidget {
         index: currentTab,
         children: _screens,
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (hasPlayer) const MiniPlayer(),
-          LiquidGlassNav(
-            currentIndex: currentTab,
-            onTap: (i) => ref.read(currentTabProvider.notifier).state = i,
-            items: [
-              NavItem(
-                icon: Icons.home_outlined,
-                activeIcon: Icons.home,
-                label: 'Home',
-              ),
-              NavItem(
-                icon: Icons.search_outlined,
-                activeIcon: Icons.search,
-                label: 'Search',
-              ),
-              NavItem(
-                icon: Icons.grid_view_outlined,
-                activeIcon: Icons.grid_view,
-                label: 'Browse',
-              ),
-              NavItem(
-                icon: Icons.menu_book_outlined,
-                activeIcon: Icons.menu_book,
-                label: 'Manga',
-              ),
-              NavItem(
-                icon: Icons.music_note_outlined,
-                activeIcon: Icons.music_note,
-                label: 'Music',
+      bottomNavigationBar: SafeArea(
+        top: false,
+        left: false,
+        right: false,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (hasPlayer) const MiniPlayer(),
+              LiquidGlassNav(
+                currentIndex: currentTab,
+                onTap: (i) => ref.read(currentTabProvider.notifier).state = i,
+                items: [
+                  NavItem(
+                    icon: Icons.home_outlined,
+                    activeIcon: Icons.home,
+                    label: 'Home',
+                  ),
+                  NavItem(
+                    icon: Icons.search_outlined,
+                    activeIcon: Icons.search,
+                    label: 'Search',
+                  ),
+                  NavItem(
+                    icon: Icons.grid_view_outlined,
+                    activeIcon: Icons.grid_view,
+                    label: 'Browse',
+                  ),
+                  NavItem(
+                    icon: Icons.menu_book_outlined,
+                    activeIcon: Icons.menu_book,
+                    label: 'Manga',
+                  ),
+                  NavItem(
+                    icon: Icons.music_note_outlined,
+                    activeIcon: Icons.music_note,
+                    label: 'Music',
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -20,6 +20,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void initState() {
     super.initState();
+    // Enter fullscreen immersive mode for video playback
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
@@ -31,8 +32,20 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void dispose() {
     _hideTimer?.cancel();
+    // Restore edge-to-edge mode with visible system UI
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    // Restore portrait orientation
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    // Ensure proper navigation bar styling
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: AppColors.surface,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarDividerColor: Colors.transparent,
+      ),
+    );
     super.dispose();
   }
 
@@ -50,44 +63,62 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: GestureDetector(
-        onTap: _onTap,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            // Video placeholder
-            Container(
-              color: const Color(0xFF0A0A0A),
-              child: const Center(
-                child: Icon(Icons.movie_outlined,
-                    color: Color(0xFF2A2A2A), size: 80),
-              ),
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          // Restore edge-to-edge mode when navigating back
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+          SystemChrome.setSystemUIOverlayStyle(
+            const SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.light,
+              systemNavigationBarColor: AppColors.surface,
+              systemNavigationBarIconBrightness: Brightness.light,
+              systemNavigationBarDividerColor: Colors.transparent,
             ),
-
-            // Controls overlay
-            AnimatedOpacity(
-              opacity: _showControls ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 200),
-              child: IgnorePointer(
-                ignoring: !_showControls,
-                child: _Controls(
-                  isPlaying: _isPlaying,
-                  progress: _progress,
-                  onPlayPause: () {
-                    setState(() => _isPlaying = !_isPlaying);
-                    _startHideTimer();
-                  },
-                  onSeek: (v) {
-                    setState(() => _progress = v);
-                    _startHideTimer();
-                  },
-                  onBack: () => Navigator.pop(context),
+          );
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: GestureDetector(
+          onTap: _onTap,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              // Video placeholder
+              Container(
+                color: const Color(0xFF0A0A0A),
+                child: const Center(
+                  child: Icon(Icons.movie_outlined,
+                      color: Color(0xFF2A2A2A), size: 80),
                 ),
               ),
-            ),
-          ],
+
+              // Controls overlay
+              AnimatedOpacity(
+                opacity: _showControls ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 200),
+                child: IgnorePointer(
+                  ignoring: !_showControls,
+                  child: _Controls(
+                    isPlaying: _isPlaying,
+                    progress: _progress,
+                    onPlayPause: () {
+                      setState(() => _isPlaying = !_isPlaying);
+                      _startHideTimer();
+                    },
+                    onSeek: (v) {
+                      setState(() => _progress = v);
+                      _startHideTimer();
+                    },
+                    onBack: () => Navigator.pop(context),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
